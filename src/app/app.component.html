@@ -1,0 +1,119 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" placeholder="Search City" name="city"
+    [(ngModel)]="cityName">
+  </form>
+</div>
+
+<div class="container" *ngIf="weatherData">
+  <div class="toplevel-data">
+<img src="../assets/hot.png" *ngIf="weatherData.main.temp > 15">
+<img src="../assets/cold.png" *ngIf="weatherData.main.temp <= 15">
+<div class="weatherdata">
+  <div class="location">{{weatherData.name}}</div>
+  <div class="temp">{{weatherData.main.temp | number: '1.0-0'}}°C</div>
+</div>
+  </div>
+  <div class="bottom-data">
+    <div class="more-info-label"> 
+      More Information
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/low.png">
+          <span>Low</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData.main.temp_min | number: '1.0-0'}}°C
+        </div>
+      </div>
+      
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/high.png"><span>High</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData.main.temp_max | number: '1.0-0'}}°C
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/humidity.png"><span>Humidity</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData.main.humidity}}%
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/wind.png"><span>Wind</span>
+        </div>
+        <div class="info-block-value">
+          {{weatherData.wind.speed}}km/hr
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container">
+  <div class="toplevel-data">
+<img src="../assets/hot.png" *ngIf="14 > 15">
+<img src="../assets/cold.png" *ngIf="14 <= 15">
+<div class="weatherdata">
+  <div class="location">Horsham</div>
+  <div class="temp">{{14.40 | number: '1.0-0'}}°C</div>
+</div>
+  </div>
+  <div class="bottom-data">
+    <div class="more-info-label"> 
+      More Information
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/low.png">
+          <span>Low</span>
+        </div>
+        <div class="info-block-value">
+          10°C
+        </div>
+      </div>
+      
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/high.png"><span>High</span>
+        </div>
+        <div class="info-block-value">
+          10°C
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/humidity.png"><span>Humidity</span>
+        </div>
+        <div class="info-block-value">
+          77%
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/wind.png"><span>Wind</span>
+        </div>
+        <div class="info-block-value">
+          11 km/hr
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+<router-outlet></router-outlet>
